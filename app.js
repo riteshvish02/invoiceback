@@ -9,10 +9,10 @@ const cors = require("cors");
 require("./models/dbconnection.js").dbconnection();
 // logger
 const logger = require("morgan");
+
 const corsOptions = {
-  origin: 'https://invoicefront-1id2.vercel.app', // Replace with your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: 'https://invoicefront-1id2.vercel.app',
+  credentials: true,  // Allow credentials
 };
 
 app.use(cors(corsOptions));
