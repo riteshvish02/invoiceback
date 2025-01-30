@@ -4,17 +4,18 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const socketIo = require("socket.io");
-
+// cors for connection
+const cors = require("cors");
 require("./models/dbconnection.js").dbconnection();
 // logger
 const logger = require("morgan");
-const allowedOrigins = [
-  "https://invoicefront-1id2.vercel.app/",
-  "http://localhost:5174",
-  "http://localhost:5173",
-  ];;
+const corsOptions = {
+  origin: 'https://invoicefront-1id2.vercel.app', // Replace with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
-
+app.use(cors(corsOptions));
 const mongoose = require("mongoose");
  
 // bodyparser
@@ -38,9 +39,8 @@ app.use(
 
 
 
-// cors for connection
-const cors = require("cors");
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+
+
 app.use(cookieParser());
 
 // file upload
