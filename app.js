@@ -9,8 +9,9 @@ require("./models/dbconnection.js").dbconnection();
 // logger
 const logger = require("morgan");
 const allowedOrigins = [
-  "http://localhost:5173",
+  "https://invoicefront-1id2.vercel.app/",
   "http://localhost:5174",
+  "http://localhost:5173",
   ];;
 
 
